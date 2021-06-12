@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar{
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    background-color: rgb(49, 187, 169);
+}
+.navbar a{
+    color:black;
+    text-decoration: none;
+}
+
+#logout {
+    color: red;
+    padding: 3px 5px;
+    background-color: white;
+    border-radius: 3px;
+}
+
+#title{
+    background-color: #333;
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: white;
+    font-weight: lighter;
+}
+
+.content{
+    max-width: 1280px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+input[type="text"],input[type="password"],input[type="email"],input[type="number"]{
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px!important;
+}
+input[type="submit"]{
+    background-color: rgb(49, 187, 169);
+    font-size: 16px;
+    color: white;
+    border:none;
+    padding:8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+select{
+    padding:8px;
+    margin-bottom: 8px;
+}
+
+.form-div{
+    display: flex;
+    gap: 20px;
+}
+
+.links{
+    display: flex;
+}
+
+a{
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+/* Students Page */
+
+.students-form{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+table{
+    width: 100%;
+}
+td, th {
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid #333;
+    text-align: center;
+  }
+  th {
+    background: #333;
+    color: white;
+    border-color: #333;
+  }
+
+  /* Attendance page */
+  .date-holder{
+      border-bottom: 2px solid black;
+      margin-top: 3px;
+      padding: 0 5px;
+  }
+
+  .attendace-form{
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+  }
+
+  .subjects-holder{
+      float:right;
+  }
+  .subjects-holder select{
+      display: flex;
+      flex-direction: column;
+      padding: 5px 8px;
+      margin: 3px 0;
+  }
+
+  /* Report */
+
+  .report-form{
+      display: flex;
+      flex-direction:column;
+  }
