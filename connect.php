@@ -1,5 +1,5 @@
 <?php
 
-$connection = mysqli_connect('localhost','root','','attmgsystem') or die('Cannot connect to server');
+$connection = mysqli_connect('localhost','root','','old_manage') or die('Cannot connect to server');
 
 ?>

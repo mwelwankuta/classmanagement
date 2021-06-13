@@ -44,76 +44,64 @@ try {
   <title>Class Management System</title>
   <meta charset="UTF-8">
 
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-
-  <link rel="stylesheet" href="css/signup.css">
+  <link rel="stylesheet" type="text/css" href="css/auth.css">
 
 </head>
 
-<body>
+<body class="container">
 
-  <header>
 
-    <h1 id="title">Class Management System</h1>
+  <div>
 
-  </header>
+    <div>
 
-  <div class="content">
-
-    <div class="row">
-      <?php
-      if (isset($success_msg)) echo $success_msg;
-      if (isset($error_msg)) echo $error_msg;
-      ?>
 
 
       <form method="post">
-        <h1>Signup</h1>
-        <div style="display:flex; flex-direction:column">
-          <label for="input1">Full Name</label>
-          <input type="text" name="fname" class="form-control" id="input1" placeholder="Fullname" required />
+        <div class="form-child">
+          <h1 class="main-title">Signup</h1>
+          <p class="success_msg"> <?php
+              if (isset($success_msg)) echo $success_msg;
+              if (isset($error_msg)) echo $error_msg;
+              ?></p>
+          <div class="login-input-holder">
+            <label for="fname">Full Name</label>
+            <input type="text" name="fname" id="input1" required />
 
-        </div>
+            <label for="phone">Phone Number</label>
+            <input type="number" name="phone" id="input1" required />
 
-        <div style="display:flex; flex-direction:column">
-          <label for="input1">Phone Number</label>
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" id="input1" required />
 
-          <input type="number" name="phone" class="form-control" id="input1" placeholder="Phone Number" required />
+            <label for="uname">Username</label>
+            <input type="text" name="uname" id="input1" required />
 
-        </div>
+            <label for="pass">Password</label>
+            <input type="password" name="pass" id=" input2" required />
 
-        <div style="display:flex; flex-direction:column">
-          <label for="input1">Email</label>
-
-          <input type="email" name="email" class="form-control" id="input1" placeholder="Your Email" required />
-
-        </div>
-
-        <div style="display:flex; flex-direction:column">
-          <label for="input1">Username</label>
-            <input type="text" name="uname" id="input1" placeholder="Choose Username" required />
-        </div>
-
-        <div style="display:flex; flex-direction:column">
-          <label for="input1" ">Password</label>
-            <input type="password" name="pass" " id=" input1" placeholder="Enter Password" required />
-        </div>
+            <!-- SignUp Button -->
+            <input type="submit" value="Signup" name="signup" />
+          </div>
 
 
-        <div class="radio">
-          <label for="input1">User Role:</label>
-          <div>
-            <label>
-              <input type="radio" name="type" id="optionsRadios1" value="student" checked> Student
-            </label>
-            <label>
-              <input type="radio" name="type" id="optionsRadios1" value="teacher"> Teacher
-            </label>
+          <div class="login-type">
+            <label>User Role:</label>
+            <div class="login-type-child">
+              <label>
+                <input type="radio" name="type" id="optionsRadios1" value="student" checked> Student
+              </label>
+              <label>
+                <input type="radio" name="type" id="optionsRadios1" value="teacher"> Teacher
+              </label>
+            </div>
+          </div>
+
+
+          <div class="auth-holder">
+          <p style="font-size:16px;">Already have an account? <a href="index.php">Login</a> here.</p>
           </div>
         </div>
-
-        <input type="submit" style="border-radius:0%" class="btn btn-primary col-md-2 col-md-offset-8" value="Signup" name="signup" />
-        <p style="font-size:16px;">Already have an account? <a href="index.php">Login</a> here.</p>
       </form>
     </div>
 

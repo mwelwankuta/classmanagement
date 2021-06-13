@@ -35,9 +35,6 @@ if (isset($_POST['login'])) {
 			$_SESSION['name'] = "davy";
 			header('location: teacher/index.php');
 
-			// throw new Exception("Username,Password or Role is wrong, try again!");
-
-			// header('location: login.php');
 		}
 	}
 
@@ -54,64 +51,54 @@ if (isset($_POST['login'])) {
 <html>
 
 <head>
-	<title>Class Management System</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" href="css/login.css">
+	<title>CMS | Login</title>
+	<link rel="stylesheet" href="css/auth.css">
 </head>
 
 <body class="container">
 
-	<header>
-
-		<h1 id="title">Class Management System</h1>
-
-	</header>
-
-	<div class="content">
+	<div>
 		<div>
 
 			<form method="post">
-				<h1>Login</h1>
+				<div class="form-child">
+					<h1 class="main-title">Sign in to Class Management</h1>
 
-				<?php
-				//printing error message
-				if (isset($error_msg)) {
-					echo "<p style='color:red;'>" . $error_msg . "</p>";
-				}
-				?>
+					<p class="error_msg">
+						<?php
+						if (isset($error_msg)) {
+							echo $error_msg;
+						}
+						?>
+					</p>
 
+					<div class="login-input-holder">
+						<label for="input1">Username</label>
+						<input type="text" name="username" id="input1" />
 
-				<div style="display:flex; flex-direction:column">
-					<label for="input1" class="col-sm-3 control-label">Username</label>
+						<label for="input2">Password</label>
+						<input type="password" name="password" id="input2" />
 
-					<input type="text" name="username" class="form-control" id="input1" placeholder="Your Username" />
-
-				</div>
-
-				<div style="display:flex; flex-direction:column">
-					<label for="input1" class="col-sm-3 control-label">Password</label>
-
-					<input type="password" name="password" id="input1" placeholder="Your Password" />
-
-				</div>
-
-
-				<div class="radio">
-					<label for="input1">Login As:</label>
-					<div class="col-sm-6">
-						<label>
-							<input type="radio" name="type" id="optionsRadios1" value="teacher" checked> Teacher
-						</label>
-						<label>
-							<input type="radio" name="type" id="optionsRadios1" value="admin"> Admin
-						</label>
+						<!-- Login Button  -->
+						<input type="submit" value="Login" name="login" class="submit-button" />
 					</div>
-				</div>
 
-				<input type="submit" style="border-radius:0%" value="Login" name="login" />
 
-				<div class="links">
-					<a href="signup.php">Create New Account</a>
+					<div class="login-type">
+						<label>Login As:</label>
+						<div class="login-type-child">
+							<label>
+								<input type="radio" name="type" id="optionsRadios1" value="teacher" checked> Teacher
+							</label>
+							<label>
+								<input type="radio" name="type" id="optionsRadios1" value="admin"> Admin
+							</label>
+						</div>
+					</div>
+
+					<div class="auth-holder">
+						<p>New to Class Management? <a href="signup.php">Create New Account</a></p>
+					</div>
 				</div>
 			</form>
 		</div>

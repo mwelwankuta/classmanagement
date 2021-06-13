@@ -3,8 +3,7 @@
 ob_start();
 session_start();
 
-if($_SESSION['name']!='davy')
-{
+if ($_SESSION['name'] != 'davy') {
 
   header('location: ../index.php');
 }
@@ -16,43 +15,47 @@ if($_SESSION['name']!='davy')
 //establishing connection
 include('connect.php');
 
-  try{
 
-    //validation of empty fields
-      if(isset($_POST['signup'])){
+if (isset($_POST['delete'])) {
+  $teacherid = $_POST['teacher_id'];
 
-        if(empty($_POST['email'])){
-          throw new Exception("Email cann't be empty.");
-        }
-
-          if(empty($_POST['uname'])){
-             throw new Exception("Username cann't be empty.");
-          }
-
-            if(empty($_POST['pass'])){
-               throw new Exception("Password cann't be empty.");
-            }
-              
-              if(empty($_POST['fname'])){
-                 throw new Exception("Username cann't be empty.");
-              }
-                if(empty($_POST['phone'])){
-                   throw new Exception("Username cann't be empty.");
-                }
-                  if(empty($_POST['type'])){
-                     throw new Exception("Username cann't be empty.");
-                  }
-
-        //insertion of data to database table admininfo
-        $result = mysqli_query($connection,"insert into admininfo(username,password,email,fname,phone,type) values('$_POST[uname]','$_POST[pass]','$_POST[email]','$_POST[fname]','$_POST[phone]','$_POST[type]')");
-        $success_msg="Signup Successfully!";
-
-  
-  }
+  mysqli_query($connection, "DELETE FROM teachers WHERE `tc_id`='$teacherid' ;");
 }
-  catch(Exception $e){
-    $error_msg =$e->getMessage();
+
+try {
+
+  //validation of empty fields
+  if (isset($_POST['signup'])) {
+
+    if (empty($_POST['email'])) {
+      throw new Exception("Email cann't be empty.");
+    }
+
+    if (empty($_POST['uname'])) {
+      throw new Exception("Username cann't be empty.");
+    }
+
+    if (empty($_POST['pass'])) {
+      throw new Exception("Password cann't be empty.");
+    }
+
+    if (empty($_POST['fname'])) {
+      throw new Exception("Username cann't be empty.");
+    }
+    if (empty($_POST['phone'])) {
+      throw new Exception("Username cann't be empty.");
+    }
+    if (empty($_POST['type'])) {
+      throw new Exception("Username cann't be empty.");
+    }
+
+    //insertion of data to database table admininfo
+    $result = mysqli_query($connection, "insert into admininfo(username,password,email,fname,phone,type) values('$_POST[uname]','$_POST[pass]','$_POST[email]','$_POST[fname]','$_POST[phone]','$_POST[type]')");
+    $success_msg = "Signup Successfully!";
   }
+} catch (Exception $e) {
+  $error_msg = $e->getMessage();
+}
 
 ?>
 
@@ -60,52 +63,56 @@ include('connect.php');
 <html lang="en">
 
 <!-- head started -->
+
 <head>
-<title>Class Management System</title>
-<meta charset="UTF-8">
+  <title>Class Management System</title>
+  <meta charset="UTF-8">
 
   <link rel="stylesheet" type="text/css" href="../css/main.css">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-   
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-   
-  <link rel="stylesheet" href="styles.css" >
-   
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </head>
 <!-- head ended -->
 
 <!-- body started -->
+
 <body>
 
-    <!-- Menus started-->
-    <header>
-
-      <h1>Class Management System</h1>
+  <!-- Menus started-->
+  <header>
+    <h3 class="main-title">CMS</h3>
+    <nav>
       <div class="navbar">
-        <a href="signup.php" style="text-decoration:none;">Create Users</a>
-        <a href="index.php" style="text-decoration:none;">Add Student/Teacher</a>
-        <a href="v-students.php" style="text-decoration:none;">View Students</a>
-      <a href="v-teachers.php" style="text-decoration:none;">View Teachers</a>
-        <a href="../logout.php" style="text-decoration:none;">Logout</a>
+        <a href="index.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/home--v5.png" /></div>
+          <p>Home</p>
+        </a>
+        <a href="v-students.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/student-registration.png" /></div>
+          <p>Students</p>
+        </a>
+        <a href="v-teachers.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/group-foreground-selected.png" /></div>
+          <p>Teachers</p>
+        </a>
       </div>
+      <div class="logout-btn">
+        <a href="../logout.php" id="logout">
+          <img src="https://img.icons8.com/material/24/ff0000/export--v2.png" />
+          <p>Logout</p>
+        </a>
+      </div>
+    </nav>
 
-    </header>
-    <!-- Menus ended -->
+  </header>
 
-<center>
-<h1>All Teachers</h1>
 
-<div class="content">
 
-  <div class="row">
-   
-  <table class="table table=stripped table-hover">
-        <thead>  
+
+  <main>
+
+    <div>
+    <h1 class="main-title">All Teachers</h1>
+      <table class="table table=stripped table-hover">
+        <thead>
           <tr>
             <th scope="col">Teacher ID</th>
             <th scope="col">Name</th>
@@ -115,36 +122,40 @@ include('connect.php');
           </tr>
         </thead>
 
-      <?php
+        <?php
 
-        $i=0;
-        $tcr_query = mysqli_query($connection,"select * from teachers order by tc_id asc");
-        while($tcr_data = mysqli_fetch_array($tcr_query)){
+        $i = 0;
+        $tcr_query = mysqli_query($connection, "select * from teachers order by tc_id asc");
+        while ($tcr_data = mysqli_fetch_array($tcr_query)) {
           $i++;
 
         ?>
           <tbody>
-              <tr>
-                <td><?php echo $tcr_data['tc_id']; ?></td>
-                <td><?php echo $tcr_data['tc_name']; ?></td>
-                <td><?php echo $tcr_data['tc_dept']; ?></td>
-                <td><?php echo $tcr_data['tc_email']; ?></td>
-                <td><?php echo $tcr_data['tc_subject']; ?></td>
-              </tr>
+            <tr>
+              <td><?php echo $tcr_data['tc_id']; ?></td>
+              <td><?php echo $tcr_data['tc_name']; ?></td>
+              <td><?php echo $tcr_data['tc_dept']; ?></td>
+              <td><?php echo $tcr_data['tc_email']; ?></td>
+              <td><?php echo $tcr_data['tc_subject']; ?></td>
+              <td>
+                <form method="post">
+                  <input type="hidden" name="teacher_id" value="<?php echo $tcr_data['tc_id'] ?>">
+                  <button type="submit" name="delete" style="background-color:red;padding:3px;border:none;color:white; ">Delete</button>
+                </form>
+              </td>
+            </tr>
           </tbody>
 
-          <?php } ?>
-          
-    </table>
-    
-  </div>
-    
+        <?php } ?>
 
-</div>
+      </table>
 
-</center>
+    </div>
+
+
+  </main>
+
 
 </body>
-<!-- Body ended  -->
 
 </html>

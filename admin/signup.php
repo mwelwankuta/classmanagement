@@ -64,17 +64,7 @@ include('connect.php');
 <title>Class Management System</title>
 <meta charset="UTF-8">
 
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-   
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-   
-  <link rel="stylesheet" href="styles.css" >
-   
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/main.css <?php echo time() ?>">
 
 </head>
 <!-- head ended -->
@@ -84,17 +74,32 @@ include('connect.php');
 
     <!-- Menus started-->
     <header>
-
-      <h1>Class Management System</h1>
+    <h3 class="main-title">CMS</h3>
+    <nav>
       <div class="navbar">
-        <a href="signup.php" style="text-decoration:none;">Create Users</a>
-        <a href="index.php" style="text-decoration:none;">Add Student/Teacher</a>
-        <a href="v-students.php" style="text-decoration:none;">View Students</a>
-      <a href="v-teachers.php" style="text-decoration:none;">View Teachers</a>
-        <a href="../logout.php" style="text-decoration:none;">Logout</a>
+        <a href="index.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/home--v5.png" /></div>
+          <p>Home</p>
+        </a>
+        <a href="v-students.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/student-registration.png" /></div>
+          <p>Students</p>
+        </a>
+        <a href="v-teachers.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/group-foreground-selected.png" /></div>
+          <p>Teachers</p>
+        </a>
       </div>
+      <div class="logout-btn">
+        <a href="../logout.php" id="logout">
+          <img src="https://img.icons8.com/material/24/ff0000/export--v2.png" />
+          <p>Logout</p>
+        </a>
+      </div>
+    </nav>
 
-    </header>
+  </header>
+
     <!-- Menus ended -->
 
 <center>

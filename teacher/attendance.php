@@ -16,13 +16,15 @@ try {
 
     $subject = $_POST['whichsubject'];
 
+    // Error on second Line
     foreach ($_POST['st_status'] as $i => $st_status) {
-
       $stat_id = $_POST['stat_id'][$i];
       $dp = date('Y-m-d');
       $subject = $_POST['whichsubject'];
-
-      $stat = mysqli_query($connection, "insert into attendance(stat_id,subject,st_status,stat_date) values('$stat_id','$subject','$st_status','$dp')");
+      $stat_grade = $_POST['stat_grade'];
+      $stat_name = $_POST['stat_name'];
+      // Fix this problem
+      $stat = mysqli_query($connection, "insert into attendance(stat_id,subject,st_status,stat_date,stat_name, stat_grade) values('$stat_id','$subject','$st_status','$dp', '$stat_name[$i]', '$stat_grade')");
 
       $att_msg = "Attendance Recorded.";
     }
@@ -52,20 +54,37 @@ try {
 
 
   <header>
-    <h1 id="title">Class Management System</h1>
-    <div class="navbar">
-      <a href="index.php">Home</a>
-      <a href="students.php">Students</a>
-      <a href="teachers.php">Teachers</a>
-      <a href="attendance.php">Attendance</a>
-      <a href="report.php" style="flex:1;">Report</a>
-      <a href="../logout.php" id="logout">Logout</a>
-    </div>
+    <h3 class="main-title">CMS</h3>
+    <nav>
+      <div class="navbar">
+        <a href="index.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/home--v5.png" /></div>
+          <p>Home</p>
+        </a>
+        <a href="students.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/student-registration.png" /></div>
+          <p>Students</p>
+        </a>
+        <a href="attendance.php">
+          <div><img src="https://img.icons8.com/material/24/ffffff/group-foreground-selected.png" /></div>
+          <p>Attendance</p>
+        </a>
+        <a href="report.php" style="flex: 1;">
+          <div><img src="https://img.icons8.com/material/24/ffffff/statistic-document.png" /></div>
+          <p>Report</p>
+        </a>
+      </div>
+      <div class="logout-btn">
+        <a href="../logout.php" id="logout">
+          <img src="https://img.icons8.com/material/24/ff0000/export--v2.png" />
+          <p>Logout</p>
+        </a>
+      </div>
+    </nav>
 
   </header>
 
-
-  <div class="content">
+  <main>
 
     <div>
       <div style="display:flex;" class="date-holder">
@@ -74,26 +93,22 @@ try {
       </div>
       <br>
 
+      <p style="color:green;">
+        <?php if (isset($att_msg)) echo $att_msg;
+        if (isset($error_msg)) echo $error_msg; ?></p>
 
-      <p style="color:green;"><?php if (isset($att_msg)) echo $att_msg;
-                            if (isset($error_msg)) echo $error_msg; ?></p>
 
-
-      <form action="" method="post">
-
-        <div class="attendace-form">
+      <form method="post" class="auth-holder">
+        <div class="form-child">
           <label>Enter Grade</label>
           <input type="text" name="whichgrade" id="input2" placeholder="">
           <input type="submit" style="border-radius:0%" value="Search" name="grade" />
         </div>
-
-
       </form>
 
       <form action="" method="post">
 
-        <div class="subjects-holder">
-
+        <div class="form-child">
           <label style="font-size:14px;">Select Subject</label>
           <select name="whichsubject" id="input1">
             <option value="intscie">Integrated Science</option>
@@ -135,11 +150,16 @@ try {
 
               <body>
                 <tr>
-                  <td><?php echo $data['st_id']; ?> <input type="hidden" name="stat_id[]" value="<?php echo $data['st_id']; ?>"> </td>
+                  <td><?php echo $data['st_id']; ?>
+                    <input type="hidden" name="stat_id[]" value="<?php echo $data['st_id']; ?>">
+                    <input type="hidden" name="stat_name[]" value="<?php echo $data['st_name'] ?>">
+                    <input type="hidden" name="stat_grade" value="<?php echo $data['st_grade'] ?>">
+                  </td>
                   <td><?php echo $data['st_name']; ?></td>
                   <td><?php echo $data['st_grade']; ?></td>
                   <td><?php echo $data['st_term']; ?></td>
-                  <td><?php echo $data['st_email']; ?></td>
+                  <td><?php echo $data['st_adress']; ?></td>
+
                   <td>
                     <div style="display:flex; flex-direction:column;">
                       <div style="display:flex;">
@@ -166,14 +186,12 @@ try {
           ?>
         </table>
 
-
         <input type="submit" value="Save!" name="att" />
-
 
       </form>
     </div>
 
-  </div>
+  </main>
 
 
 

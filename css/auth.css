@@ -1,0 +1,104 @@
+body{
+    background-color: rgb(12, 12, 12);
+    color: rgb(221, 221, 221);
+    outline: none;
+    font-family: Helvetica, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-title{
+    font-weight: lighter;
+}
+
+.login-type,
+.login-type-child,
+.login-input-holder{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"]{
+    border: 0.6px solid rgb(49, 49, 49);
+    padding: 6px 8px;
+    border-radius: 3px;
+    background-color:rgb(12, 12, 12);
+    color: white;
+    font-size: 15px;
+}
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus{
+    border-color: seagreen;
+}
+
+input[type="submit"], button{
+    padding: 6px 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background-color:seagreen ;
+    color: white;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+input[type="submit"]:hover, button:hover{
+    background-color: green;
+    transition: .4s;
+}
+
+label{
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+form{
+    padding: 15px;
+    background-color: rgb(30, 30, 31);
+}
+
+.form-child{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.success_msg{
+    color: rgb(25, 161, 25);
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.auth-holder{
+    padding: 2px 8px;
+    border: .8px solid  rgb(121, 121, 122);
+    border-radius: 4px;
+}
+.error_msg{
+    color: rgb(192, 40, 40);
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+a{
+    text-decoration: none;
+    color: seagreen;
+    text-underline-position: below;
+    text-underline-offset: 6px;
+}
+
+a:hover{
+    text-decoration: underline;
+    transition: .2s;
+}

@@ -1,125 +1,207 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+/* border color rgb(58, 58, 58); */
+header {
+  font-size: 15px;
+  font-style: bold;
+  text-align: center;
+}
+
+body {
+  color: white;
+  font-family: Helvetica, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(12, 12, 12);
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100vh;
+}
+
+header{
+  background-color: #222;
+  border-right: .8px solid rgb(58, 58, 58);
+}
+nav{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  padding-left: 10px;
 }
 
 .navbar{
-    display: flex;
-    gap: 15px;
-    padding: 10px;
-    background-color: rgb(49, 187, 169);
-}
-.navbar a{
-    color:black;
-    text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  flex:1;
 }
 
-#logout {
-    color: red;
-    padding: 3px 5px;
-    background-color: white;
+nav a{
+  text-decoration: none;
+  font-weight: 700;
+  color: white;
+  text-underline-offset: 6px;
+  padding: 8px 0;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+nav a:hover{
+  text-decoration: underline;
+  transition: .2s;
+}
+
+.main-title{
+  font-weight: lighter;
+}
+
+main{
+  margin: 0 20px;
+  overflow-y: scroll;
+}
+
+.cards-holder{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.card{
+  cursor: pointer;
+}
+
+.card:hover{
+  transform: translateY(5%);
+  transition: .2s ease-in-out;
+}
+
+
+
+.card:nth-child(1){
+  background-color: #133b5c;
+}
+
+.card:nth-child(2){
+  background-color: #5c1352;
+}
+
+.card:nth-child(3){
+  background-color: #135c50;
+}
+
+.card:nth-child(4){
+  background-color: #d8d8d8;
+}
+
+.card{
+  padding: 10px;
+  border: .7px solid rgb(41, 41, 41);
+}
+
+.reports{
+  margin-top: 40px;
+}
+
+.reports .card{
+  color: white;
+  background-color: rgb(30, 30, 31);
+}
+
+.reports .card:hover{
+  transform: translateY(0%);
+}
+
+.reports table{
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+  border-spacing: 10px;
+}
+
+.reports thead{
+  font-size: 20px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  
+}
+
+.logout-btn{
+  position: absolute;
+  bottom:10px;
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn a {
+  color: red;
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+select{
+    border: 0.6px solid rgb(49, 49, 49);
+    padding: 6px 8px;
+    border-radius: 3px;
+    background-color:rgb(12, 12, 12);
+    color: white;
+    font-size: 15px;
+}
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus{
+    border-color: seagreen;
+}
+
+input[type="submit"], button{
+    padding: 6px 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background-color:seagreen ;
+    color: white;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
     border-radius: 3px;
 }
 
-#title{
-    background-color: #333;
-    padding: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-    color: white;
-    font-weight: lighter;
+input[type="submit"]:hover, button:hover{
+    background-color: green;
+    transition: .4s;
 }
 
-.content{
-    max-width: 1280px;
-    margin-right: auto;
-    margin-left: auto;
+label{
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-input[type="text"],input[type="password"],input[type="email"],input[type="number"]{
-    padding: 8px;
-    margin-bottom: 10px;
-    font-size: 16px!important;
-}
-input[type="submit"]{
-    background-color: rgb(49, 187, 169);
-    font-size: 16px;
-    color: white;
-    border:none;
-    padding:8px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-select{
-    padding:8px;
-    margin-bottom: 8px;
-}
-
-.form-div{
-    display: flex;
-    gap: 20px;
-}
-
-.links{
-    display: flex;
-}
-
-a{
-    text-decoration: underline;
-    margin-top: 10px;
-}
-
-/* Students Page */
-
-.students-form{
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-}
 table{
-    width: 100%;
+  width: 100%;
+  text-align: left;
+  margin: 10px 2px;
 }
-td, th {
-    width: 4rem;
-    height: 2rem;
-    border: 1px solid #333;
-    text-align: center;
-  }
-  th {
-    background: #333;
-    color: white;
-    border-color: #333;
-  }
 
-  /* Attendance page */
-  .date-holder{
-      border-bottom: 2px solid black;
-      margin-top: 3px;
-      padding: 0 5px;
-  }
+thead{
+  text-align: left;
+  border-top: 1px solid white;
+}
 
-  .attendace-form{
-      display: flex;
-      flex-direction: column;
-      max-width: 400px;
-  }
 
-  .subjects-holder{
-      float:right;
-  }
-  .subjects-holder select{
-      display: flex;
-      flex-direction: column;
-      padding: 5px 8px;
-      margin: 3px 0;
-  }
+form{
+  padding: 15px;
+  background-color: rgb(30, 30, 31);
+}
 
-  /* Report */
-
-  .report-form{
-      display: flex;
-      flex-direction:column;
-  }
+.form-child{
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+}

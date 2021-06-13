@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2021 at 08:50 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Jun 13, 2021 at 01:02 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `attmgsystem`
+-- Database: `old_manage`
 --
 
 -- --------------------------------------------------------
@@ -40,10 +42,7 @@ CREATE TABLE `admininfo` (
 --
 
 INSERT INTO `admininfo` (`username`, `password`, `email`, `fname`, `phone`, `type`) VALUES
-('admin', 'admin', 'admin@gmail.com', 'admin', '2147483647', 'admin'),
-('christine', 'password', 'christine@gmail.com', 'Christine', '4512224500', 'student'),
-('john', 'password', 'john@gmail.com', 'John Walker', '8541112450', 'student'),
-('kevin', 'password', 'kevinm@gmail.com', 'Kevin Moore', '1247778540', 'teacher');
+('admin', 'admin', 'admin@gmail.com', 'admin', '0966666666', 'admin');
 
 -- --------------------------------------------------------
 
@@ -52,28 +51,13 @@ INSERT INTO `admininfo` (`username`, `password`, `email`, `fname`, `phone`, `typ
 --
 
 CREATE TABLE `attendance` (
-  `stat_id` varchar(20) NOT NULL,
-  `subject` varchar(20) NOT NULL,
-  `st_status` varchar(10) NOT NULL,
-  `stat_date` date NOT NULL
+  `stat_id` varchar(50) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `st_status` varchar(50) NOT NULL,
+  `stat_date` varchar(50) NOT NULL,
+  `stat_name` varchar(50) NOT NULL,
+  `stat_grade` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `attendance`
---
-
-INSERT INTO `attendance` (`stat_id`, `subject`, `st_status`, `stat_date`) VALUES
-('1', 'algo', 'Present', '2018-11-14'),
-('2', 'algo', 'Present', '2018-11-13'),
-('1', 'algo', 'Absent', '2018-11-13'),
-('1', 'algo', 'Absent', '2021-04-10'),
-('2', 'algo', 'Present', '2021-04-10'),
-('3', 'algo', 'Absent', '2021-04-10'),
-('4', 'algo', 'Absent', '2021-04-10'),
-('5', 'algo', 'Present', '2021-04-10'),
-('5', 'obm', 'Present', '2021-04-10'),
-('2', 'weblab', 'Absent', '2021-04-10'),
-('4', 'weblab', 'Present', '2021-04-10');
 
 -- --------------------------------------------------------
 
@@ -83,11 +67,11 @@ INSERT INTO `attendance` (`stat_id`, `subject`, `st_status`, `stat_date`) VALUES
 
 CREATE TABLE `reports` (
   `st_id` varchar(30) NOT NULL,
-  `subject` varchar(30) NOT NULL,
+  `course` varchar(30) NOT NULL,
   `st_status` varchar(30) NOT NULL,
   `st_name` varchar(30) NOT NULL,
   `st_dept` varchar(30) NOT NULL,
-  `st_grade` int(11) NOT NULL
+  `st_batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -99,22 +83,10 @@ CREATE TABLE `reports` (
 CREATE TABLE `students` (
   `st_id` varchar(20) NOT NULL,
   `st_name` varchar(20) NOT NULL,
-  `st_dept` varchar(20) NOT NULL,
   `st_grade` int(4) NOT NULL,
   `st_term` int(11) NOT NULL,
-  `st_email` varchar(30) NOT NULL
+  `st_address` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`st_id`, `st_name`, `st_dept`, `st_grade`, `st_term`, `st_email`) VALUES
-('1', 'John', 'MIT', 2020, 2, 'john@gmail.com'),
-('2', 'Christine', 'BBA', 2021, 1, 'christine@gmail.com'),
-('3', 'Rex', 'MScIT', 2020, 4, 'rexer@gmail.com'),
-('4', 'Gabriel', 'BIT', 2021, 2, 'gabbae@gmail.com'),
-('5', 'Will Williams', 'BIT', 2016, 6, 'williamsw@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -131,14 +103,6 @@ CREATE TABLE `teachers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `teachers`
---
-
-INSERT INTO `teachers` (`tc_id`, `tc_name`, `tc_dept`, `tc_email`, `tc_subject`) VALUES
-('1', 'Kevin Moore', 'MIT', 'kevin@gmail.com', 'SE'),
-('2', 'John Smith', 'MIT', 'smithj@gmail.com', 'Networking');
-
---
 -- Indexes for dumped tables
 --
 
@@ -147,12 +111,6 @@ INSERT INTO `teachers` (`tc_id`, `tc_name`, `tc_dept`, `tc_email`, `tc_subject`)
 --
 ALTER TABLE `admininfo`
   ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `attendance`
---
-ALTER TABLE `attendance`
-  ADD KEY `stat_id` (`stat_id`);
 
 --
 -- Indexes for table `reports`
@@ -171,16 +129,7 @@ ALTER TABLE `students`
 --
 ALTER TABLE `teachers`
   ADD PRIMARY KEY (`tc_id`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `attendance`
---
-ALTER TABLE `attendance`
-  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`stat_id`) REFERENCES `students` (`st_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
